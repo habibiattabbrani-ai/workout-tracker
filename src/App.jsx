@@ -481,3 +481,71 @@ const App = () => {
 };
 
 export default App;
+import React from 'react';
+
+function App() {
+  // Fungsi untuk membuat website berbicara
+  const bersuara = (teks) => {
+    const ucapan = new window.SpeechSynthesisUtterance();
+    ucapan.text = teks;
+    ucapan.lang = 'id-ID'; // Menggunakan suara bahasa Indonesia
+    window.speechSynthesis.speak(ucapan);
+  };
+
+  // Gaya tampilan (Warna Bagus & Gradien Modern)
+  const gayaContainer = {
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', // Gradien Ungu Biru yang estetis
+    color: 'white',
+    fontFamily: 'Arial, sans-serif',
+    textAlign: 'center',
+    padding: '20px'
+  };
+
+  const gayaTombolInsta = {
+    marginTop: '20px',
+    padding: '14px 30px',
+    backgroundColor: '#E1306C', // Warna resmi Instagram
+    color: 'white',
+    border: 'none',
+    borderRadius: '25px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+    transition: '0.3s'
+  };
+
+  return (
+    <div style={gayaContainer}>
+      {/* Judul akan berbicara saat halaman pertama kali diklik atau saat judul disentuh */}
+      <h1 
+        style={{ cursor: 'pointer', fontSize: '2.5rem', marginBottom: '10px' }} 
+        onClick={() => bersuara("Selamat datang di Hijrah Fit Pro")}
+      >
+        HijrahFit Pro 🚀
+      </h1>
+      
+      <p style={{ fontSize: '1.1rem', opacity: '0.9' }}>
+        Klik judul di atas untuk mendengar suara, atau klik tombol di bawah untuk ke Instagram saya!
+      </p>
+
+      {/* Tombol yang langsung menghantarkan ke Instagram habibi_nofa */}
+      <button 
+        style={gayaTombolInsta}
+        onClick={() => {
+          bersuara("Membuka Instagram Hasan");
+          window.open('https://www.instagram.com/habibi_nofa', '_blank');
+        }}
+      >
+        Kunjungi Instagram Saya
+      </button>
+    </div>
+  );
+}
+
+export default App;
